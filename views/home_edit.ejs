@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=edit? "Submit your home" : "Edit your home"%></title>
+    <form action="/host/<%=edit? "edited":"added"%>" method="post">
+      Name of the home: <input type="text" name="home" value="<%= edit?home.houseName:"" %>" /> Price of the home: <input type="text"
+      name="price" value="<%= edit?home.housePrice:"" %>"/>
+      <input name="id" type="hidden" value=<%=edit?home.homeId:"None"%> />
+      <button>Submit</button>
+    </form>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP page</title>
+  </head>
+  <body>
+    <h1>OTP</h1>
+    <%= error %>
+    <p>The otp is sent to your email id:<%= email %>, please enter the otp in under 20 minutes</p>
+    <form action="/postOtp" method="post">
+      <input type="text" placeholder="OTP" name="otp" />
+      <input type="hidden"  name="email" value="<%= email %>" />
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

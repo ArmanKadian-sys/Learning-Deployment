@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Page</title>
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+
+    <% if (!errors.length==0) errors.forEach(item => { %><%= item %><% }) %>
+    <form action="/signedup" method="post">
+      <input
+        type="text"
+        placeholder="name"
+        name="name"
+        value="<%=typeof obj=='object' && old.isEmpty()?
+      '': old.name %>"
+      />
+      <input
+        type="email"
+        placeholder="email"
+        name="email"
+        value="<%=typeof obj=='object' && old.isEmpty()?
+      '': old.email %>"
+      />
+      <input
+        type="password"
+        placeholder="password"
+        name="password"
+        value="<%=typeof obj=='object' && old.isEmpty()?
+      '': old.password %>"
+      />
+      host <input type="radio" value="host" placeholder="host" name="type"
+      <%=typeof obj=='object' && !old.isEmpty() && old.type=='host'? 'checked':
+      '' %> /> guest <input type="radio" value="guest" placeholder="guest"
+      name="type" <%=typeof obj=='object' && !old.isEmpty() &&
+      old.type=='guest'? 'checked': '' %>/>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

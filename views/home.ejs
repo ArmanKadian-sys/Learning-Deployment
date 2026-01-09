@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Welcome to AirBnb</h1>
+    <% if(isLoggedIn){ %>
+
+    <a href="/host/submission">Click here to add home</a>
+    <a href="/host/homes">click here to edit homes</a>
+    <form action="/logout" method="post">
+      <button>Logout</button>
+    </form>
+
+    <% }else{ %>
+    <form action="/login" method="get">
+      <button>Login</button>
+    </form>
+    <form action="/signup" method="get">
+      <button>Sign Up</button>
+    </form>
+    <%} %>
+
+    <h1>List of Homes</h1>
+    <ul>
+      <% total.forEach((item)=>{ %>
+
+      <li><%= item.houseName %></li>
+      <li><%= item.housePrice %></li>
+      <li><a href="/homes/<%= item.homeId %>">Details</a></li>
+      <% if(isLoggedIn){ %>
+      <li>
+        <form action="/favourites" method="post">
+          <input type="hidden" name="fav" value="<%= item.homeId%>" />
+          <button>Click here to add to favourits</button>
+        </form>
+      </li>
+      <% }%>
+
+      <hr />
+      <% }); %>
+    </ul>
+  </body>
+</html>
