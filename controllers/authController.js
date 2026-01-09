@@ -3,7 +3,7 @@ const User = require("../models/User.js");
 const bycrypt = require("bcryptjs");
 const session = require("express-session");
 const sendGrid=require("@sendgrid/mail");
-const gridKey=process.env.GRID_KEY; //'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';
+const gridKey='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';
 
 sendGrid.setApiKey(gridKey);
 
@@ -148,7 +148,7 @@ exports.postSignedUp = [
         console.log("user details saved in DB");
         const msg={
           to: req.body.email,
-          from: process.env.FROM_EMAIL, //"akadian087@gmail.com"
+          from: "akadian087@gmail.com",
           subject: "Welcome to homes",
           html: `<h1>Welcome ${req.body.name} to Homes</h1>`,
         };
@@ -194,7 +194,7 @@ exports.postForgot=async(req, res, next)=>{
 
    const msg={
           to: email,
-          from: process.env.FROM_EMAIL, //"akadian087@gmail.com"
+          from: "akadian087@gmail.com",
           subject: "Your OTP",
           html: `<h1>Your OTP is ${otp} to Homes</h1>`,
     };
